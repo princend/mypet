@@ -24,17 +24,33 @@ class MyPet extends StatelessWidget {
   MyPet({Key key, this.title}) : super(key: key);
   final String title;
 
+  Widget _dialogBuilder(BuildContext context, Pet pet) {
+    return SimpleDialog(
+      children: [
+        Container(
+          width: 80.0,
+          height: 120.0,
+        )
+      ],
+    );
+  }
+
   Widget _listItemBuilder(BuildContext context, int index) {
-    return ListTile(
-      title: Text(
-        pets[index].name,
-        style: TextStyle(
-            color: pets[index].gender == '公' ? Colors.blue : Colors.pink,
-            fontSize: 20),
-      ),
-      leading: Icon(
-        Icons.pets,
-        color: pets[index].color,
+    return GestureDetector(
+      onTap: () => showDialog(
+          context: context,
+          builder: (context) => _dialogBuilder(context, pets[index])),
+      child: ListTile(
+        title: Text(
+          pets[index].name,
+          style: TextStyle(
+              color: pets[index].gender == '公' ? Colors.blue : Colors.pink,
+              fontSize: 20),
+        ),
+        leading: Icon(
+          Icons.pets,
+          color: pets[index].color,
+        ),
       ),
     );
   }
