@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mypet/pet.model.dart';
@@ -17,10 +19,32 @@ class Petdialog extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              SizedBox(
+                height: 16.0,
+              ),
+              Row(children: [
+                Text(
+                  pet.name,
+                  style: TextStyle(color: Colors.brown, fontSize: 26.0),
+                  textAlign: TextAlign.center,
+                ),
+                IconButton(
+                  onPressed: () => {pet.likes++},
+                  icon: Icon(
+                    Icons.thumb_up,
+                    color: Colors.blue,
+                  ),
+                ),
+              ]),
+              SizedBox(
+                height: 16.0,
+              ),
               Text(
-                pet.name,
-                style: TextStyle(color: Colors.brown, fontSize: 26.0),
-                textAlign: TextAlign.center,
+                'Likes:${pet.likes}',
+                style: TextStyle(color: Colors.blue, fontSize: 26.0),
+              ),
+              SizedBox(
+                height: 16.0,
               ),
               Text(
                 '性別：${pet.gender}',

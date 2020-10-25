@@ -48,6 +48,11 @@ class MyPet extends StatelessWidget {
           Icons.pets,
           color: pets[index].color,
         ),
+        subtitle: Text(
+          'Likes:${pets[index].likes}',
+          style: TextStyle(
+              color: Colors.blueGrey, fontSize: 16, fontFamily: 'RobotoMono'),
+        ),
       ),
     );
   }
