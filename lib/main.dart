@@ -22,13 +22,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyPet extends StatelessWidget {
+class MyPet extends StatefulWidget {
   MyPet({Key key, this.title}) : super(key: key);
   final String title;
+
+  @override
+  State<StatefulWidget> createState() => _MyPetState();
+}
+
+class _MyPetState extends State<MyPet> {
+  refresh() {
+    setState(() {});
+  }
 
   Widget _dialogBuilder(BuildContext context, Pet pet) {
     return Petdialog(
       pet: pet,
+      notifyParent: refresh,
     );
   }
 
@@ -57,11 +67,12 @@ class MyPet extends StatelessWidget {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-        this.title,
+        widget.title,
         textAlign: TextAlign.center,
       )),
       body: ListView.builder(
